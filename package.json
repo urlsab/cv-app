@@ -28,6 +28,7 @@
     "react-link-state": "^0.1.2",
     "react-scripts": "5.0.1",
     "reactstrap": "^9.0.2",
+    "semver": "^7.3.7",
     "styled-components": "^5.3.5",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"

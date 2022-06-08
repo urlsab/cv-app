@@ -1,46 +1,30 @@
-// import axios from 'axios';
 import { useState } from 'react';
 // import { v4 as uuidv4 } from 'uuid';
 // or const { v4: uuidv4 } = require('uuid');
 
-// import axios from 'axios';
-// import { useEffect } from 'react';
-
 const HooksTry = () =>  {
-    const [ourForm, setOurForm] = useState([{ 
-        formName: '',
+    const [ourForm, setOurForm] = useState({ 
+        objectName:  {
         firstName: '', 
         lastName: '', 
         email: '', 
-        age: '', 
-    }]);
+        age: 0, 
+    }});
 
-    // useEffect(() => {
-    //     const asking = async () => {
-    //         try {
-    //             const respone = await axios
-    //             .post('http://localhost:4000/postInput')
-    //         }
-    //         catch (error) {
-    //            console.log(error.message);
-    //         }
-    //     }
-    // })
-    // uuidv4(ourForm);
-    // console.log(uuidv4(ourForm));
+    
 
     const nameForState = () => {
         //
         alert('hreefi');
     }
 
-    const handleChange = event => {
+    const handleChange = (event) => {
         const { name, value } = event.target;
         setOurForm(prevState => ({
-            ...prevState,
+            objectName: {...prevState.firstName + prevState.lastName},
             [name]: value
-        }));
-        console.log(ourForm);
+          }));
+          console.log(ourForm);
     };
     
       return (

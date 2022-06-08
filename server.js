@@ -13,13 +13,24 @@ app.use(bodyParser.urlencoded({ extended: true}));
 const parser = app.use(bodyParser.json())
 
 // 1. enter 4000 directly give us this route
-// app.get('/', (req, res) => {
-//   res.send('home page');
+app.get('/', (req, res) => {
+  res.send('home page');
+});
+
+// fs.readFile('./db.json',  (err,  data) => {
+//   if (err) throw err;
+//   let db = JSON.parse(data); // here is your data
+//   db.push({
+//       userId: 2,
+//   })
+
+//   fs.writeFile('./db.json', JSON.stringify(db) , (err) => {}) // here you update the file itself
 // });
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "src/Components/FullProfile", "HooksTry.js"));
-});
+// for get as a file
+// app.get("/", (req, res) => {
+//   res.sendFile(path.join(__dirname, "src/Components/FullProfile", "HooksTry.js"));
+// });
 
 // 2. user post the input to the server
 app.post('/postInput', function (req, res) {
@@ -30,7 +41,7 @@ app.post('/postInput', function (req, res) {
 })
 
 app.get('/allResume', (req, res) => {
-  res.send(req.body); // empty object
+  res.send(req.body); // empty object - why?
   console.log(req.body);
 });
 

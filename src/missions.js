@@ -1,4 +1,7 @@
 /*
+fix - local 4000 display as doc and not as server (white page)
+
+1. disply the json project as regula js file
 
 1. give for any object a name or id - ? npm package / loopFunc map with key / {key=someKey}
 
