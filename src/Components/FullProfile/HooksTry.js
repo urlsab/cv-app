@@ -8,24 +8,32 @@ const HooksTry = () =>  {
         firstName: '', 
         lastName: '', 
         email: '', 
-        age: 0, 
+        age: '', 
     }});
 
-    
-
-    const nameForState = () => {
-        //
-        alert('hreefi');
+    const makeId = () => {
+        let text = "";
+        const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        for (let i = 0; i < 5; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+        return text;
     }
 
     const handleChange = (event) => {
         const { name, value } = event.target;
         setOurForm(prevState => ({
-            objectName: {...prevState.firstName + prevState.lastName},
+            objectName: {...prevState.objectName.firstName}, // <=
             [name]: value
           }));
           console.log(ourForm);
     };
+
+    const nameForState = () => {
+        ourForm.objectName = makeId()
+        console.log(ourForm);
+        console.log(ourForm.objectName);
+        alert('hreefi');
+    }
     
       return (
         <form action='http://localhost:4000/postInput' method='POST' onSubmit={handleChange}>
@@ -33,7 +41,7 @@ const HooksTry = () =>  {
                 type="text"
                 name="firstName"
                 placeholder="first Name"
-                value={ourForm.firstName}
+                value={ourForm.objectName.firstName}
                 onChange={handleChange}
             />
             
@@ -41,7 +49,7 @@ const HooksTry = () =>  {
                 type="text"
                 name="lastName"
                 placeholder="Last Name"
-                value={ourForm.lastName}
+                value={ourForm.objectName.lastName}
                 onChange={handleChange}
             />
 
@@ -49,7 +57,7 @@ const HooksTry = () =>  {
                 type="email"
                 name="email"
                 placeholder="email"
-                value={ourForm.email}
+                value={ourForm.objectName.email}
                 onChange={handleChange}
             />
 
@@ -57,14 +65,15 @@ const HooksTry = () =>  {
                 type="number"
                 name="age"
                 placeholder="age"
-                value={ourForm.age}
+                value={ourForm.objectName.age}
                 onChange={handleChange}
             />
 
                 <button onClick={() => {nameForState(); handleChange(); } }>Upload</button>
-                {ourForm.email !== '' && ourForm.age !== '' && ourForm.firstName !== '' && ourForm.lastName !== '' ? (ourForm.formName = ourForm.firstName) : null}
+                {/* {ourForm.objectName.email ? (ourForm.objectName = makeId()) : null} */}
         </form>
       );  
 };
 
 export default HooksTry;
+
