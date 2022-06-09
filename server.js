@@ -1,16 +1,14 @@
-// move { InitialState } data to this file
-// const { v4: uuidv4 } = require('uuid');
 const express = require('express');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require("cors");
-// app.use(cors());
 
 const app = express();
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true}));
-const parser = app.use(bodyParser.json())
+app.use(cors());
+
 
 // 1. enter 4000 directly give us this route
 app.get('/', (req, res) => {
@@ -35,9 +33,18 @@ app.get('/', (req, res) => {
 // 2. user post the input to the server
 app.post('/postInput', function (req, res) {
   res.send(req.body); //  show on 4000
-  // http://localhost:4000/postInput?firstName=wdc&lastName=rgb&email=thm%40gmail.com&age=2
+
   console.log(req.body); // show on the terminal
-  // res.json(req.body); //
+
+  fs.readFile('./db.json',  (err,  data) => {
+    if (err) throw err;
+    let db = JSON.parse(data); // here is your data
+    db.push(req.body)
+
+    fs.writeFile('./db.json', JSON.stringify(db) , (err) => {}) // here you update the file itself
+  });
+
+
 })
 
 app.get('/allResume', (req, res) => {
@@ -52,4 +59,4 @@ app.get('/styledResume', (req, res) => {
   res.send(req.body);
 });
 
-app.listen(4000);
+app.listen(4000, () => console.log('listening on port 4000'));
