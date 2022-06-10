@@ -15,22 +15,7 @@ app.get('/', (req, res) => {
   res.send('home page');
 });
 
-// fs.readFile('./db.json',  (err,  data) => {
-//   if (err) throw err;
-//   let db = JSON.parse(data); // here is your data
-//   db.push({
-//       userId: 2,
-//   })
-
-//   fs.writeFile('./db.json', JSON.stringify(db) , (err) => {}) // here you update the file itself
-// });
-
-// for get as a file
-// app.get("/", (req, res) => {
-//   res.sendFile(path.join(__dirname, "src/Components/FullProfile", "HooksTry.js"));
-// });
-
-// 2. user post the input to the server
+// 2. user post the input to the server = db.json file 
 app.post('/postInput', function (req, res) {
   res.send(req.body); //  show on 4000
 
@@ -44,11 +29,17 @@ app.post('/postInput', function (req, res) {
     fs.writeFile('./db.json', JSON.stringify(db) , (err) => {}) // here you update the file itself
   });
 
+})
+
+app.get ('/returnPost', (req, res, next) => {
+
+  fs.readFile
+
 
 })
 
 app.get('/allResume', (req, res) => {
-  res.send(req.body); // empty object - why?
+  res.send(req.body); 
   console.log(req.body);
 });
 

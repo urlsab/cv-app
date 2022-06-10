@@ -12,7 +12,6 @@ const HooksTry = () =>  {
         age: '', 
     }});
 
-
     const handleChange = (event) => {
         const { name, value } = event.target;
         setOurForm(prevState => ({
@@ -72,4 +71,3 @@ const HooksTry = () =>  {
 };
 
 export default HooksTry;
-
