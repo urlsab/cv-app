@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import axios from 'axios';
-
 import { createRandomId } from '../../utils/utils';
+import axios from 'axios';
 
 const HooksTry = () =>  {
     const [ourForm, setOurForm] = useState({ 
@@ -24,12 +23,22 @@ const HooksTry = () =>  {
     };
 
     const onSubmitForm = async () => {
-        const id = createRandomId();
-        const form = {
+        // make shorter and smarter conditional here for submit a full form
+        // check if something in the form is an empty string
+        // if (ourForm.objectName.firstName && 
+        //     ourForm.objectName.lastName && 
+        //     ourForm.objectName.age && 
+        //     ourForm.objectName.email !== '' ){
+            const id = createRandomId();
+            const form = {
             [id]: ourForm.objectName
         }
-        const response = await axios.post('http://localhost:4000/postInput', form);
+        const response = await axios.post('http://localhost:8080/postInput', form);
         console.log(response.data);
+        // }
+        // else {
+        //     alert('please enter valid data');
+        // } 
     }
 
       return (

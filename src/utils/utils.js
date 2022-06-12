@@ -1,7 +1,7 @@
-export const createRandomId = (length? = 5) => {
+export const createRandomId = () => {
     let id = "";
     const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for (let i = 0; i < 5; i++)
+    for (let i = 0; i < 7; i++)
         id += possible.charAt(Math.floor(Math.random() * possible.length));
     return id;
 }
