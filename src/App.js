@@ -1,16 +1,20 @@
 import './App.css';
 import BasicProfile from './Components/BasicProfile/BasicProfie';
 import Resume from './Components/Resume/Resume';
-import HooksTry from './Components/FullProfile/HooksTry';
+import PostUserInput from './Components/FullProfile/PostUserInput';
+// import Routing from './Routes/Routing';
+import React from 'react';
+import PullData from './Components/PullData/PullData';
 
 function App() {
   return (
-    <div className="App">
-      <p>[from app.js]</p>
-      <Resume/>
-      <HooksTry/>
-      <BasicProfile/>
-    </div>
+      <React.Fragment>
+        {/* <Routing/> */}
+        <Resume/>
+        <PostUserInput/>
+        <BasicProfile/>
+        <PullData/>
+      </React.Fragment>
   );
 }
 

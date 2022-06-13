@@ -2,12 +2,10 @@ import React from 'react';
 import resumeData from '../../db.json';
 import './PullData.css';
 
-const allData = resumeData;
-
 const renderData = () => {
     return (
-        allData.map(i => 
-            (<p key={i} className="itemStyle">{allData}</p>)
+        resumeData.map(i => 
+            (<li key={i} className="itemStyle">{resumeData[i]}</li>)
         )
     )
 }
