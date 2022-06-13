@@ -39,10 +39,15 @@ app.post('/postInput', function (req, res) {
 
 // })
 
-// app.get('/allResume', (req, res) => {
-//   res.send(req.body); 
-//   console.log(req.body);
-// });
+const getAllResumesData = async () => {
+   const data = await fs.readFileSync('./src/db.json');
+   return JSON.parse(data);
+}
+
+app.get('/allResume', async (req, res) => {
+    const allResume = await getAllResumesData();
+    res.send(allResume);
+});
 
 // 3. the server save the input and style it - by .push maybe
 
