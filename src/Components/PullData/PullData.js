@@ -1,20 +1,43 @@
-import React from 'react';
-import resumeData from '../../db.json';
+import React, {useEffect, useState} from 'react';
+
+import {getAllResumesData} from '../../api/resume';
 import './PullData.css';
 
-const renderData = () => {
-    return (
-        resumeData.map(i => 
-            (<li key={i} className="itemStyle">{resumeData[i]}</li>)
-        )
-    )
-}
 
-const PullData = () => (
-    <div className='styledResumeData'>
-        <p>all resumes</p>
-        {renderData()}
-    </div>
-);
+const PullData = () => {
+    const [resumeData, setResumeData] = useState([]);
+
+    useEffect(() => {
+        const getData = async () => {
+            const data = await getAllResumesData();
+            setResumeData(data);
+        }
+        getData();
+    }, [])
+
+    const renderData = () => {
+        return resumeData.map(element => {
+                const id = Object.keys(element)[0]; // GRAB THE OBJECT NAME - ITS THE ID...
+                const resumeFields = element[id];
+
+                return (
+                    <ul key={id}>
+                        <li className="itemStyle">{JSON.stringify(resumeFields)}</li>
+                    </ul>
+                )
+            }
+        )
+
+    }
+
+
+    return (
+        <div className='styledResumeData'>
+            <p>all resumes</p>
+            {renderData()}
+        </div>
+    )
+
+}
 
 export default PullData;
