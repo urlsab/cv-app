@@ -1,8 +1,10 @@
 body {
   background-color: brown;
+  color: rgb(21, 2, 39);
 }
 
-.App {
-  text-align: center;
-  background-color: blueviolet;
+.styleItem {
+  color: chartreuse;
+  font-size: 25px;
+  background-color: chocolate;
 }
