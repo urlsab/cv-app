@@ -15,3 +15,9 @@ export const getAllResumesData = async () => {
         console.log(err);
     }
 }
+
+// export const getResumeById = async () => {
+//     try {
+//         const { data } = await API.get('')
+//     }
+// }
