@@ -1,19 +1,24 @@
 import './App.css';
-import BasicProfile from './Components/BasicProfile/BasicProfie';
-import Resume from './Components/Resume/Resume';
+// import BasicProfile from './Components/BasicProfile/BasicProfie';
 import PostUserInput from './Components/FullProfile/PostUserInput';
-// import Routing from './Routes/Routing';
 import React from 'react';
+import { Routes ,Route } from 'react-router-dom';
 import PullData from './Components/PullData/PullData';
+import OneData from './Components/OneData/OneData';
+import Navbar from './Components/Navbar/Navbar';
 
-function App() {
+const App = () => {
   return (
       <React.Fragment>
-        {/* <Routing/> */}
-        <Resume/>
-        <PostUserInput/>
-        <BasicProfile/>
-        <PullData/>
+        <Navbar/>
+        <Routes>
+          <Route path='/oneData' element={<OneData/>} />
+          <Route path='/allData' element={<PullData/>} />
+          <Route path='/postInput' element={<PostUserInput/>} />
+        </Routes>
+        
+        
+        
       </React.Fragment>
   );
 }

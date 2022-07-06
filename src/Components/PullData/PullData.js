@@ -3,7 +3,6 @@ import React, {useEffect, useState} from 'react';
 import {getAllResumesData} from '../../api/resume';
 import './PullData.css';
 
-
 const PullData = () => {
     const [resumeData, setResumeData] = useState([]);
 
@@ -17,7 +16,7 @@ const PullData = () => {
 
     const renderData = () => {
         return resumeData.map(element => {
-                const id = Object.keys(element)[0]; // GRAB THE OBJECT NAME - ITS THE ID...
+                const id = Object.keys(element)[0]; // GRAB THE OBJECTNAME - ITS THE ID...
                 const resumeFields = element[id];
 
                 return (
