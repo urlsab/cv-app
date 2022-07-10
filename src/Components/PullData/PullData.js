@@ -1,10 +1,29 @@
 import React, {useEffect, useState} from 'react';
-
 import {getAllResumesData} from '../../api/resume';
 import './PullData.css';
 
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
+// import { useRef } from 'react';
+
 const PullData = () => {
     const [resumeData, setResumeData] = useState([]);
+    const printRef = React.useRef();
+
+    const handleDownloadPdf = async () => {
+        const element = printRef.current;
+        const canvas = await html2canvas(element);
+        const data = canvas.toDataURL('image/png');
+    
+        const pdf = new jsPDF();
+        const imgProperties = pdf.getImageProperties(data);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight =
+          (imgProperties.height * pdfWidth) / imgProperties.width;
+    
+        pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('print.pdf');
+      };
 
     useEffect(() => {
         const getData = async () => {
@@ -21,7 +40,8 @@ const PullData = () => {
 
                 return (
                     <ul key={id}>
-                        <li className="itemStyle">{JSON.stringify(resumeFields)}</li>
+                        <p ref={printRef} className="itemStyle">{JSON.stringify(resumeFields)}</p>
+                        <button type="button" onClick={handleDownloadPdf}>Download as PDF</button>
                     </ul>
                 )
             }
