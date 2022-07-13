@@ -1,8 +1,8 @@
 import React from 'react';
-import './Navbar.css';
 import { NavLink } from "react-router-dom";
 
-// make it click able the links
+import './Navbar.css';
+
 const Navbar = () => {
     return(
             <nav className="main-header">

@@ -4,7 +4,6 @@ import './PullData.css';
 
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
-// import { useRef } from 'react';
 
 const PullData = () => {
     const [resumeData, setResumeData] = useState([]);
@@ -46,9 +45,7 @@ const PullData = () => {
                 )
             }
         )
-
     }
-
 
     return (
         <div className='styledResumeData'>
@@ -56,7 +53,6 @@ const PullData = () => {
             {renderData()}
         </div>
     )
-
 }
 
 export default PullData;

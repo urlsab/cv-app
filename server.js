@@ -13,6 +13,7 @@ app.use(cors());
 
 
 //all routes here is on 4000
+
 // 1. enter 4000 directly give us this route
 app.get('/', (req, res) => {
   res.send('home page');
